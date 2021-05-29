@@ -19,7 +19,7 @@ class Card extends React.Component {
         className="bgCard"
         style={{
           background: `url(${cntImages})`,
-          height: `${1800}px`,
+         
         }}
       >
         <Fade duration={30000}>

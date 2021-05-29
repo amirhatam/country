@@ -149,7 +149,7 @@ class App extends React.Component {
     return (
       <div
         className="text-center bgC "
-        style={{ background: `url(${BG})` }}
+        style={{ background: `url(${BG})`,height:`${window.innerHeight}px` }}
       >
         <div className="input-group pt-3 headerContainer">
           <div className="input-group-prepend">
