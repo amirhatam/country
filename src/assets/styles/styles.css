@@ -1,0 +1,53 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+.container_country{
+    width: 500px;
+    margin: auto;
+    text-align: center;
+}
+.flag {
+    width: 20%;
+}
+
+.inputS{
+    width: 450px;
+    display: flex;
+    margin: auto;
+    display: inline-block;
+}
+
+/* .bgC{
+    background-color: aqua;
+} */
+
+.bgCard{
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    background-size: cover !important;
+}
+
+.cntD{
+    font-size: 30px;
+    background: #85c1f8;
+    color: white;
+    border: 1px solid #0682f4;
+    border-radius: 50%;
+    width: 30%;
+    margin: auto;
+}
+.headerContainer{
+    width: 30%;
+    margin: auto;
+}
+.cardP{
+    font-size: 25px;
+    color: black;
+    background-color: rgb(173 216 230 / 60%);
+   
+}
+
+.bgImage {
+    width: 100%;
+}
