@@ -20,13 +20,15 @@ class App extends React.Component {
       currencies: "",
       languages: "",
       imagesC: "",
-      imagesCollect:""
+      imagesCollect:"",
+      countryName:""
     };
     this.userInput = this.userInput.bind(this);
     this.renderImages = this.renderImages.bind(this);
    
   }
   componentDidMount() {
+   
     // fetch("http://localhost:8000/countries/name/france")
     // fetch("https://restcountries.eu/rest/v2/name/france")
     //   .then((response) => response.json())
@@ -64,7 +66,6 @@ class App extends React.Component {
       .then((result) => {
         // let data = result.resultCountries[0];
         let data = result[0];
-         console.log("result", data);
         
         this.setState({
           name: data.name,
@@ -75,12 +76,13 @@ class App extends React.Component {
           image: data.img,
           currencies: data.currencies[0].name,
           languages: data.languages[0].name,
+          countryName: data.name,
         });
       })
       .catch((err) => console.log(err));
 
     fetch(
-      "http://api.unsplash.com/search/photos?page=1&query=" + this.state.name +"&client_id=" + clientId
+      "https://api.unsplash.com/search/photos?page=1&query=" + this.state.name +"&client_id=" + clientId
     )
       .then((response) => response.json())
       .then((data) => {
@@ -101,13 +103,16 @@ class App extends React.Component {
 
     this.setState({
       name: event.target.value,
+    
     });
   }
+
 
   renderImages(){
     if (!this.state.imagesCollect){
       return "Choose a country"
-    }else if(!this.state.capital){
+    }
+    else if(!this.state.capital){
       const errImg = `https://www.portent.com/images/2018/01/Mystery-AdWords-Traffic-from-Banned-International-Countries-Portent.jpg`
       return <img className="bgImage py-1 border border-5" src={errImg} alt="new"/>
     }
@@ -120,12 +125,17 @@ class App extends React.Component {
     }
     
   }
+  renderFlag(){
+    if (!this.state.flag){
+      return  ""
+    }
+    else {
+      return  <img className="flag" alt=" " src={this.state.flag}></img>
+      }
+  }
 
   render() {
-    console.log(this.state.capital)
    const {
-    flag,
-    name,
     capital,
     region,
     population,
@@ -133,7 +143,9 @@ class App extends React.Component {
     currencies,
     languages,
     imageCnt,
+    countryName
    } = this.state
+
     return (
       <div
         className="text-center bgC "
@@ -144,7 +156,6 @@ class App extends React.Component {
             <Button
               onClick={() => this.getCountry()}
               clickButton={() => this.getCountry("search")}
-              // children=""
             >
               <i className="fas fa-search"></i>
             </Button>
@@ -166,11 +177,9 @@ class App extends React.Component {
           <p className="col-2 mt-2">Currencies</p>
         </div>
 
-
-        
         <Card
-          flagImg={flag}
-          country={name}
+          flagImg={this.renderFlag()}
+          country={countryName}
           capitalName={capital}
           regionName={region}
           countryPopulation={population}

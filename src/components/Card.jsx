@@ -25,7 +25,7 @@ class Card extends React.Component {
         <Fade duration={30000}>
           <div className="row thead-light m-0">
             <p className="col-2 cardP">
-              <img className="flag" alt=" " src={flagImg}></img>
+              {flagImg}
               {country}
             </p>
             <p className=" col-2 cardP"> {capitalName}</p>
