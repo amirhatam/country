@@ -13,13 +13,14 @@ class Card extends React.Component {
       countryCurren,
       country,
       imagecoll
-     } = this.props
+    } = this.props
+
     return (
       <div
         className="bgCard"
         style={{
           background: `url(${cntImages})`,
-         
+
         }}
       >
         <Fade duration={30000}>
